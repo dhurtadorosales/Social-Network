@@ -1,0 +1,7 @@
+login:
+    resource: "@AppBundle/Controller/UserController.php"
+    type: annotation
+
+home_publication:
+    resource: "@AppBundle/Controller/PublicationController.php"
+    type: annotation

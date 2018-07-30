@@ -1,0 +1,7 @@
+<div class="avatar">
+    {% if not user.image  %}
+        <img src="{{ asset('assets/images/default.png') }}" alt="">
+    {% else  %}
+        <img src="{{ asset('uploads/users/'~ user.image) }}" alt="">
+    {% endif  %}
+</div>

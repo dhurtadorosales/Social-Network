@@ -1,0 +1,22 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="box-form col-lg-8">
+        <h2>Regístrate</h2>
+        <hr>
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-default">Registrar</button>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/custom/nick_test.js') }}"></script>
+{% endblock %}

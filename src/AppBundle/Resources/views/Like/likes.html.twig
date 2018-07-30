@@ -1,0 +1,29 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div id="timeline" class="col-lg-12 box-default timeline pull-left">
+            <h1 class="box-header">Publicaciones que le gustan a {{ user.nick }}</h1>
+
+            <div class="count">
+                <span class="label label-primary">
+                    Total de publicaciones: {{ pagination.getTotalItemCount }}
+                </span>
+            </div>
+            <hr>
+
+            {# List of publications #}
+            <div class="box-content">
+                {% include '@App/User/common/_publications.html.twig' %}
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/custom/home.js') }}" type="text/javascript"></script>
+{% endblock %}

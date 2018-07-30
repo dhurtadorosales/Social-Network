@@ -1,0 +1,25 @@
+services:
+    register.form.handler:
+        class: AppBundle\Form\Handler\RegisterFormHandler
+        arguments:
+            - '@request_stack'
+            - '@user.service'
+            - '@security.password_encoder'
+
+    user.form.handler:
+        class: AppBundle\Form\Handler\UserFormHandler
+        arguments:
+            - '@request_stack'
+            - '@user.service'
+
+    publication.form.handler:
+        class: AppBundle\Form\Handler\PublicationFormHandler
+        arguments:
+            - '@request_stack'
+            - '@publication.service'
+
+    message.form.handler:
+        class: AppBundle\Form\Handler\MessageFormHandler
+        arguments:
+            - '@request_stack'
+            - '@message.service'

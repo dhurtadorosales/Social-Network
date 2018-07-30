@@ -1,0 +1,51 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="col-lg-10 box-default profile-box">
+
+        {# Avatar #}
+        {% include '@App/User/common/_avatar.html.twig' with {
+            'user': user
+        } only %}
+
+        <div class="first-name-last-name">
+
+            {% include '@App/User/common/_buttons.html.twig' with {
+                'profile': true,
+                'user': user
+            } only %}
+
+            <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+            <div class="clearfix"></div>
+            <span class="nickname">
+                {{ user.nick }}
+            </span>
+        </div>
+
+        <div class="bio">
+            {{ user.bio }}
+        </div>
+
+        <div id="user-stats">
+            {# Stats #}
+            {% include '@App/User/common/_stats.html.twig' with {
+                'user': user
+            } only %}
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div id="user-publications">
+            {# List of publications #}
+            {% include '@App/User/common/_publications.html.twig' %}
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/custom/profile.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/custom/buttons_following.js') }}" type="text/javascript"></script>
+{% endblock %}

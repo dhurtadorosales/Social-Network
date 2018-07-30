@@ -1,0 +1,44 @@
+imports:
+    - { resource: form.yml }
+    - { resource: twig.yml }
+
+services:
+    user.service:
+        class: AppBundle\Service\UserService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    following.service:
+        class: AppBundle\Service\FollowingService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+            - '@knp_paginator'
+
+    publication.service:
+        class: AppBundle\Service\PublicationService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+            - '@knp_paginator'
+
+    like.service:
+        class: AppBundle\Service\LikeService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+            - '@knp_paginator'
+
+    notification.service:
+        class: AppBundle\Service\NotificationService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+            - '@knp_paginator'
+
+    message.service:
+        class: AppBundle\Service\MessageService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@request_stack'
+            - '@knp_paginator'

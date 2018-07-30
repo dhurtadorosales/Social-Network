@@ -1,0 +1,61 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/js/custom/users.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/buttons_following.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="box-default col-lg-12">
+            <h1>Gente</h1>
+            <div class="count">
+                <span class="label label-primary">
+                    Total de personas: {{ pagination.getTotalItemCount }}
+                </span>
+            </div>
+
+            <hr>
+
+            <div class="box-content box-users">
+                {% for user in pagination %}
+                    <div class="col-lg-12 user-item">
+                        {# Avatar #}
+                        {% include '@App/User/common/_avatar.html.twig' with {
+                            'user': user
+                        } only %}
+
+                        <div class="user-item-content">
+                            <p>
+                                <a href="{{ path('user_profile', {'user': user.id}) }}"
+                                    class="user-link">
+                                    {{ user.firstName }} {{ user.lastName }}
+                                </a> - {{ user.nick }}
+                            </p>
+                            <p>{{ user.bio }}</p>
+                        </div>
+
+                        {% include '@App/User/common/_buttons.html.twig' with {
+                            'profile': false,
+                            'user': user
+                        } only %}
+
+                        <div class="clearfix"></div>
+
+                        <hr>
+                    </div>
+
+                {% endfor %}
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
